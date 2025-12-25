@@ -29,14 +29,14 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with: 
             image-ref: 'awesometodo:latest'
-            format: 'table'
+            format: 'sarif''
             ignore-unfixed: true
             vuln-type: 'os,library'
             severity: 'HIGH,CRITICAL'
-            output: 'trivy-report.txt'
+            output: 'trivy-results.sarif'
 
           # スキャン結果をGitHubセキュリティタブにアップロード
       - name: Upload Trivy report
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: 'trivy-results.sarif'
+            sarif_file: 'trivy-results.sarif'
